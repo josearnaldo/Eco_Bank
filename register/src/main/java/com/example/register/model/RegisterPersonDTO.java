@@ -2,60 +2,89 @@ package com.example.register.model;
 
 import java.io.Serializable;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
 
-@Entity
-@Table(name = "user")
-public class RegisterPerson implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class RegisterPersonDTO implements Serializable {
+
+    @NotEmpty(message = "id cannot be empty")
     private Long id;
+
+    @NotEmpty(message = "name cannot be empty")
     private String name;
+
+    @NotEmpty(message = "cpf cannot be empty")
     private String cpf;
+
+    @NotEmpty(message = "rg cannot be empty")
     private String rg;
+
+    @NotEmpty(message = "name Mother cannot be empty")
     private String nameMother;
+
+    @NotEmpty(message = "date of birth cannot be empty")
     private String datebirth;
+
+    @NotEmpty(message = "Nacionality cannot be empty")
     private String nacionality;
+
+    @NotEmpty(message = "Address cannot be empty")
     private String address;
+
+    @NotEmpty(message = "cellphone cannot be empty")
     private String cellPhone;
+
+    @Email(message = "Email should be valid")
+    @NotEmpty(message = "email name cannot be empty")
     private String email;
+
+    @NotEmpty(message = "password cannot be empty")
     private String password;
+
+    @NotEmpty(message = "politics cannot be empty")
     private String politics;
+
+    @NotEmpty(message = "Not empty Estado")
     private String estado;
+
+    @NotEmpty(message = "Not empty City")
     private String city;
+
+    @NotEmpty(message = "Not empty Number")
     private String number;
+
+    @NotEmpty(message = "LGPD cannot be empty")
     private String lgpd;
+
+    @NotEmpty(message = "State Emissor the rg be empty")
     private String emissorRg;
+
+    @NotEmpty(message = "Date emissor the rg be empty")
     private String dateEmissorRG;
 
-    public RegisterPerson() {
+    public RegisterPersonDTO() {
+
     }
 
-    public RegisterPerson(Long id, String name, String cpf, String rg, String nameMother, String datebirth,
-            String nacionality, String address, String cellPhone, String email, String password, String politics,
-            String estado, String city, String number, String lgpd, String emissorRg, String dateEmissorRG) {
-        this.id = id;
-        this.name = name;
-        this.cpf = cpf;
-        this.rg = rg;
-        this.nameMother = nameMother;
-        this.datebirth = datebirth;
-        this.nacionality = nacionality;
-        this.address = address;
-        this.cellPhone = cellPhone;
-        this.email = email;
-        this.password = password;
-        this.politics = politics;
-        this.estado = estado;
-        this.city = city;
-        this.number = number;
-        this.lgpd = lgpd;
-        this.emissorRg = emissorRg;
-        this.dateEmissorRG = dateEmissorRG;
+    public RegisterPersonDTO(RegisterPerson registerPerson) {
+        this.id = registerPerson.getId();
+        this.name = registerPerson.getName();
+        this.cpf = registerPerson.getCpf();
+        this.rg = registerPerson.getRg();
+        this.nameMother = registerPerson.getNameMother();
+        this.datebirth = registerPerson.getDatebirth();
+        this.nacionality = registerPerson.getNacionality();
+        this.address = registerPerson.getAddress();
+        this.cellPhone = registerPerson.getCellPhone();
+        this.email = registerPerson.getEmail();
+        this.password = registerPerson.getPassword();
+        this.politics = registerPerson.getPolitics();
+        this.estado = registerPerson.getEstado();
+        this.city = registerPerson.getCity();
+        this.number = registerPerson.getNumber();
+        this.lgpd = registerPerson.getLgpd();
+        this.emissorRg = registerPerson.getEmissorRg();
+        this.dateEmissorRG = registerPerson.getDateEmissorRG();
     }
 
     public Long getId() {
